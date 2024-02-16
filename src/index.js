@@ -4,7 +4,8 @@ import ReactDOM from 'react-dom/client';
 // import Countdown from 'react-countdown';
 // import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 // import BootstrapPage from './BootstrapPage';
-import App from './ContextAPI/App';
+// import App from './ContextAPI/App';
+import App from './UseEffect/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App/>);
