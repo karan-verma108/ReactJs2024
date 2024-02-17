@@ -5,7 +5,8 @@ import ReactDOM from 'react-dom/client';
 // import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 // import BootstrapPage from './BootstrapPage';
 // import App from './ContextAPI/App';
-import App from './UseEffect/App';
+// import App from './UseEffect/App';
+import ChangeTitle from './UseEffect/ChangeTitle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App/>);
+root.render(<ChangeTitle/>);
