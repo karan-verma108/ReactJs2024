@@ -6,6 +6,7 @@ import Home from "./Home";
 import Name from "./Name";
 import ErrorPage from "./ErrorPage";
 import Navbar from "./Navbar";
+import Services from "./Services";
 
 const App = () => {
     return (
@@ -15,7 +16,8 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/contact/name" element={<Name />} />
+                <Route path="/contact/name" element={<Name title='WWE' />} />
+                <Route path="/services" element={<Services title='Service' />}/>
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
         </>
