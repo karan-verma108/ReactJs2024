@@ -8,6 +8,7 @@ import ErrorPage from "./ErrorPage";
 import Navbar from "./Navbar";
 import Services from "./Services";
 import User from "./User";
+import Search from "./Search";
 
 const App = () => {
     return (
@@ -20,6 +21,7 @@ const App = () => {
                 <Route path="/contact/name" element={<Name title='WWE' />} />
                 <Route path="/services" element={<Services title='Service' />} />
                 <Route path="/users/:fname/:lname" element={<User />} />
+                <Route path="/search" element={<Search />} />
                 <Route path="*" element={<ErrorPage />} />
             </Routes>
         </>

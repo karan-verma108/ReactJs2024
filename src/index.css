@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.search_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 6%;
+}
+
+.search_div input {
+    width: 20%;
+    outline: none;
+}
+
+.search_div img {
+    width: 30%;
+    border-radius: 10px;
+}
