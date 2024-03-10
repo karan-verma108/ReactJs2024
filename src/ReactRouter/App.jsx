@@ -4,7 +4,6 @@ import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
 import Name from "./Name";
-// import ErrorPage from "./ErrorPage";
 import Navbar from "./Navbar";
 import Services from "./Services";
 import User from "./User";
