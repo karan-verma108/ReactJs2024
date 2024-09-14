@@ -15,8 +15,6 @@ export default function NewAccordian() {
 
   const handleMultiSelection = (currentItemId) => {
     const selectedItems = [...multiSelected];
-    console.log('selectedItems', selectedItems);
-
     const indexOfSelectedItem = multiSelected.indexOf(currentItemId);
 
     if (indexOfSelectedItem === -1) {
