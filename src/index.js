@@ -14,13 +14,16 @@ import './index.css';
 // import PokemonData from './Pokemon/PokemonData';
 // import App from './ReactRouter/App';
 // import ToDo from './ToDo/ToDo';
-import NewAccordian from './NewAccordian';
+// import NewAccordian from './NewAccordian';
+import MyApp from './MyApp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <BrowserRouter>
     {/* <DependentDropdown /> */}
     {/* <App /> */}
-    <NewAccordian />
+    {/* <NewAccordian /> */}
+    <MyApp />
   </BrowserRouter>
 );
