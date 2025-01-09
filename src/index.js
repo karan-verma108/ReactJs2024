@@ -15,7 +15,8 @@ import './index.css';
 // import App from './ReactRouter/App';
 // import ToDo from './ToDo/ToDo';
 // import NewAccordian from './NewAccordian';
-import MyApp from './MyApp';
+// import MyApp from './MyApp';
+import Counter from './BasicComponents/Counter';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -24,6 +25,7 @@ root.render(
     {/* <DependentDropdown /> */}
     {/* <App /> */}
     {/* <NewAccordian /> */}
-    <MyApp />
+    {/* <MyApp /> */}
+    <Counter />
   </BrowserRouter>
 );
