@@ -68,3 +68,22 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Hydration 👍
+
+The process when javascript is loaded into a server rendered HTML, is called hydration. Think of it as a dry sponge.
+So the server rendered initial HTML is the dry sponge (basic structure, not interactive). And when water (javascript) is poured over this dry sponge to make it interactive. 
+
+This process is called hydration.
+
+Reconciliation 👍
+
+The process that React follows to determine how to update user interface when a change is occured. It compares the current UI (previous virtual DOM) and the new UI (updated virtual DOM) and makes relevant changes in the real DOM. So for this comparision, React uses the diffing algorith. This entire process is called reconciliation.
+
+Diffing algorith 👍
+
+As discussed above, this is the algorithm that React uses to differentiate the changes in the two virtual DOMs (the current and the new one). The purpose of diffing is to identify which parts of the UI have changed so React can minimize updates and only re-render the parts that have actually changed, instead of re-rendering the entire UI.
+
+
+
+
