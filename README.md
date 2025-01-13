@@ -84,6 +84,16 @@ Diffing algorith 👍
 
 As discussed above, this is the algorithm that React uses to differentiate the changes in the two virtual DOMs (the current and the new one). The purpose of diffing is to identify which parts of the UI have changed so React can minimize updates and only re-render the parts that have actually changed, instead of re-rendering the entire UI.
 
+NPM 👍
+
+It's called the node package manager. All the libraries/packages are stored in the npm registry. We can use npm i to install any package/libray locally using this command.
+
+NPX 👍
+
+It's called the node package executer. It is a package runner tool that means it can run the packages we use with its command without having to intall that package locally.
+
+A good example is npx create-react-app my-app (this command will only run the create-react-app package to generate a React app without having to install React locally.)
+
 
 
 
