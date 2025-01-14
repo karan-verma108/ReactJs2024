@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
+import BackgroundChanger from './BasicComponents/BackgroundChanger';
 // import Statewise from './CovidCase/Statewise';
 // import App from './App';
 // import DependentDropdown from './DependentDropdown';
@@ -16,7 +17,7 @@ import './index.css';
 // import ToDo from './ToDo/ToDo';
 // import NewAccordian from './NewAccordian';
 // import MyApp from './MyApp';
-import Counter from './BasicComponents/Counter';
+// import Counter from './BasicComponents/Counter';
 // import CardGallery from './BasicComponents/CardGallery';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -27,7 +28,8 @@ root.render(
     {/* <App /> */}
     {/* <NewAccordian /> */}
     {/* <MyApp /> */}
-    <Counter />
+    {/* <Counter /> */}
     {/* <CardGallery /> */}
+    <BackgroundChanger />
   </BrowserRouter>
 );
