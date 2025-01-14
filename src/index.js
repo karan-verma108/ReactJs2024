@@ -16,8 +16,8 @@ import './index.css';
 // import ToDo from './ToDo/ToDo';
 // import NewAccordian from './NewAccordian';
 // import MyApp from './MyApp';
-// import Counter from './BasicComponents/Counter';
-import CardGallery from './BasicComponents/CardGallery';
+import Counter from './BasicComponents/Counter';
+// import CardGallery from './BasicComponents/CardGallery';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -27,7 +27,7 @@ root.render(
     {/* <App /> */}
     {/* <NewAccordian /> */}
     {/* <MyApp /> */}
-    {/* <Counter /> */}
-    <CardGallery />
+    <Counter />
+    {/* <CardGallery /> */}
   </BrowserRouter>
 );
