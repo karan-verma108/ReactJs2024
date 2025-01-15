@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
-import BackgroundChanger from './BasicComponents/BackgroundChanger';
+// import BackgroundChanger from './BasicComponents/BackgroundChanger';
 // import Statewise from './CovidCase/Statewise';
 // import App from './App';
 // import DependentDropdown from './DependentDropdown';
@@ -19,6 +19,7 @@ import BackgroundChanger from './BasicComponents/BackgroundChanger';
 // import MyApp from './MyApp';
 // import Counter from './BasicComponents/Counter';
 // import CardGallery from './BasicComponents/CardGallery';
+import RandomPasswordGenerator from './BasicComponents/RandomPasswordGenerator';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -30,6 +31,7 @@ root.render(
     {/* <MyApp /> */}
     {/* <Counter /> */}
     {/* <CardGallery /> */}
-    <BackgroundChanger />
+    {/* <BackgroundChanger /> */}
+    <RandomPasswordGenerator />
   </BrowserRouter>
 );
