@@ -1,22 +1,23 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 
 export default function RandomPasswordGenerator() {
   const [passwordLength, setPasswordLength] = useState(8);
-  const [min, setMin] = useState(97);
-  const [max, setMax] = useState(122);
+  const [randomPassword, setRandomPassword] = useState('');
 
   const [isCapitalize, setIsCapitalize] = useState(false);
 
-  const generateRandomPassword = () => {
-    let finalStr = '';
+  const generateRandomPassword = useCallback(
+    (min, max) => {
+      let finalStr = '';
+      for (let i = 0; i < passwordLength; i++) {
+        const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+        finalStr += String.fromCharCode(randomNum);
+      }
 
-    for (let i = 0; i < passwordLength; i++) {
-      const randomNum = Math.floor(Math.random() * (max - min + 1)) + min; //for small characters
-      finalStr += String.fromCharCode(randomNum);
-    }
-
-    return finalStr;
-  };
+      setRandomPassword(finalStr);
+    },
+    [passwordLength]
+  );
 
   const inputRef = useRef();
 
@@ -25,22 +26,19 @@ export default function RandomPasswordGenerator() {
   };
 
   const handleCopyClick = (e) => {
-    navigator.clipboard.writeText(generateRandomPassword()).then(
-      //fix this, the copied text doesnt match the shown in the input field
-      () => alert('Text copied!'),
+    navigator.clipboard.writeText(randomPassword).then(
+      () => alert(`Password copied!`),
       (err) => alert('Error', err)
     );
   };
 
   useEffect(() => {
     if (isCapitalize) {
-      setMin(65);
-      setMax(90);
+      generateRandomPassword(65, 90);
     } else {
-      setMin(97);
-      setMax(122);
+      generateRandomPassword(97, 122);
     }
-  }, [isCapitalize]);
+  }, [isCapitalize, passwordLength]);
 
   return (
     <div className='flex flex-col gap-4 h-screen justify-center items-center'>
@@ -52,7 +50,8 @@ export default function RandomPasswordGenerator() {
             ref={inputRef}
             id='generatedPassword'
             name='generatedPassword'
-            value={generateRandomPassword()}
+            value={randomPassword}
+            disabled
             className='border border-slate-400 p-2'
           />
           <button
