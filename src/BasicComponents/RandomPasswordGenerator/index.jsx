@@ -5,6 +5,7 @@ export default function RandomPasswordGenerator() {
   const [randomPassword, setRandomPassword] = useState('');
 
   const [isCapitalize, setIsCapitalize] = useState(false);
+  const [isNumeric, setIsNumeric] = useState(false);
 
   const generateRandomPassword = useCallback(
     (min, max) => {
@@ -33,12 +34,16 @@ export default function RandomPasswordGenerator() {
   };
 
   useEffect(() => {
-    if (isCapitalize) {
+    if (isCapitalize && isNumeric) {
+      generateRandomPassword(48, 90);
+    } else if (isCapitalize) {
       generateRandomPassword(65, 90);
+    } else if (isNumeric) {
+      generateRandomPassword(48, 57);
     } else {
       generateRandomPassword(97, 122);
     }
-  }, [isCapitalize, passwordLength]);
+  }, [isCapitalize, passwordLength, isNumeric]);
 
   return (
     <div className='flex flex-col gap-4 h-screen justify-center items-center'>
@@ -73,7 +78,7 @@ export default function RandomPasswordGenerator() {
           Password length is {passwordLength}
         </h2>
       </div>
-      <div>
+      <div className='flex gap-3'>
         <div className='flex gap-2 items-center'>
           <input
             type='checkbox'
@@ -83,6 +88,16 @@ export default function RandomPasswordGenerator() {
             onChange={() => setIsCapitalize((prevState) => !prevState)}
           />
           <label htmlFor='capitalLetters'>Capitalize</label>
+        </div>
+        <div className='flex gap-2 items-center'>
+          <input
+            type='checkbox'
+            id='numberLetters'
+            name='numberLetters'
+            value={isNumeric}
+            onChange={() => setIsNumeric((prevState) => !prevState)}
+          />
+          <label htmlFor='numberLetters'>Numbers</label>
         </div>
       </div>
     </div>
