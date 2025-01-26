@@ -17,13 +17,21 @@ export default function RandomPasswordGenerator() {
 
       setRandomPassword(finalStr);
     },
-    [passwordLength]
+    [passwordLength] //a new reference of this function will only be created when its dependency passwordLength changes, otherwise React will reuse the same function refernece across all re-renders
   );
 
   const inputRef = useRef();
 
   const handleRange = (e) => {
-    setPasswordLength(e.target.value);
+    setPasswordLength(Number(e.target.value));
+  };
+
+  const handleCapitalizeChange = () => {
+    setIsCapitalize((prevState) => !prevState);
+  };
+
+  const handleNumericChange = () => {
+    setIsNumeric((prevState) => !prevState);
   };
 
   const handleCopyClick = (e) => {
@@ -43,7 +51,7 @@ export default function RandomPasswordGenerator() {
     } else {
       generateRandomPassword(97, 122);
     }
-  }, [isCapitalize, passwordLength, isNumeric]);
+  }, [isCapitalize, isNumeric, passwordLength, generateRandomPassword]);
 
   return (
     <div className='flex flex-col gap-4 h-screen justify-center items-center'>
@@ -85,7 +93,7 @@ export default function RandomPasswordGenerator() {
             id='capitalLetters'
             name='capitalLetters'
             value={isCapitalize}
-            onChange={() => setIsCapitalize((prevState) => !prevState)}
+            onChange={handleCapitalizeChange}
           />
           <label htmlFor='capitalLetters'>Capitalize</label>
         </div>
@@ -95,7 +103,7 @@ export default function RandomPasswordGenerator() {
             id='numberLetters'
             name='numberLetters'
             value={isNumeric}
-            onChange={() => setIsNumeric((prevState) => !prevState)}
+            onChange={handleNumericChange}
           />
           <label htmlFor='numberLetters'>Numbers</label>
         </div>
