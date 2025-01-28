@@ -9,6 +9,8 @@ export default function RandomPasswordGenerator() {
 
   const generateRandomPassword = useCallback(
     (min, max) => {
+      console.log('call back fn run again');
+
       let finalStr = '';
       for (let i = 0; i < passwordLength; i++) {
         const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -35,10 +37,8 @@ export default function RandomPasswordGenerator() {
   };
 
   const handleCopyClick = (e) => {
-    navigator.clipboard.writeText(randomPassword).then(
-      () => alert(`Password copied!`),
-      (err) => alert('Error', err)
-    );
+    inputRef.current?.select();
+    navigator.clipboard.writeText(randomPassword);
   };
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function RandomPasswordGenerator() {
             id='generatedPassword'
             name='generatedPassword'
             value={randomPassword}
-            disabled
+            readOnly
             className='border border-slate-400 p-2'
           />
           <button
