@@ -19,7 +19,8 @@ import './index.css';
 // import MyApp from './MyApp';
 // import Counter from './BasicComponents/Counter';
 // import CardGallery from './BasicComponents/CardGallery';
-import RandomPasswordGenerator from './BasicComponents/RandomPasswordGenerator';
+// import RandomPasswordGenerator from './BasicComponents/RandomPasswordGenerator';
+import CurrencyConverter from './BasicComponents/CurrencyConverter';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -32,6 +33,7 @@ root.render(
     {/* <Counter /> */}
     {/* <CardGallery /> */}
     {/* <BackgroundChanger /> */}
-    <RandomPasswordGenerator />
+    {/* <RandomPasswordGenerator /> */}
+    <CurrencyConverter />
   </BrowserRouter>
 );
