@@ -13,6 +13,10 @@ export const navData: NavDataType[] = [
     name: 'Contact',
     path: '/contact',
   },
+  {
+    name: 'Github',
+    path: '/github',
+  },
 ];
 
 export const footerData: FooterDataType[] = [

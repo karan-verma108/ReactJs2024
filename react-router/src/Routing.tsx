@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Home } from './components';
+import { Github, Header, Home, User } from './components';
 import { Route, Routes } from 'react-router';
 import Footer from './components/global/Footer';
 
@@ -9,6 +9,8 @@ export default function Routing(): React.JSX.Element {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/user/:userId' element={<User />} />
+        <Route path='/github' element={<Github />} />
       </Routes>
       <Footer />
     </>
