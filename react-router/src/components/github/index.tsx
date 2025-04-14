@@ -1,22 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useLoaderData } from 'react-router';
 
 export default function Github(): React.JSX.Element {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [userData, setUserData]: any = useState([]);
-
-  const githubApiUrl: string = import.meta.env.VITE_GITHUB_API ?? '';
-  const githubUserName: string = import.meta.env.VITE_GITHUB_USERNAME ?? '';
-
-  useEffect(() => {
-    fetch(`${githubApiUrl}/${githubUserName}`)
-      .then((res) => res.json())
-      .then((data) => setUserData(data))
-      .catch((err) => console.log('err', err));
-  }, []);
-
-  if (userData?.length === 0) {
-    return <h1>Loading...</h1>;
-  }
+  const userData = useLoaderData();
 
   return (
     <div>
