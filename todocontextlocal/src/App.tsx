@@ -1,29 +1,62 @@
 import { useState } from 'react';
 import { TodoProvider } from './contexts/Todo';
 import TodoItem from './components/TodoItem';
+import { getTodosFromLocalStorage } from './utils/helper';
 
 function App() {
   const [inputValue, setInputValue]: StringState = useState<string>('');
+  const localTodos = getTodosFromLocalStorage();
 
-  const getTodosFromLocalStorage = () => {
-    try {
-      return JSON.parse(localStorage.getItem('todos') || '');
-    } catch (error: unknown) {
-      console.log('error', error);
-
-      return null;
-    }
-  };
-
-  const todos = getTodosFromLocalStorage();
+  const [todos, setTodos]: [
+    TodoType[],
+    React.Dispatch<React.SetStateAction<TodoType[]>>
+  ] = useState<TodoType[]>(localTodos ?? []);
 
   const addTodo = (todo: TodoType) => {
     if (todos) {
-      localStorage.setItem('todos', JSON.stringify([...todos, todo]));
+      const updatedTodosWithExistingTodo = [...todos, todo];
+      setTodos(updatedTodosWithExistingTodo);
+      localStorage.setItem(
+        'todos',
+        JSON.stringify(updatedTodosWithExistingTodo)
+      );
     } else {
-      localStorage.setItem('todos', JSON.stringify([todo]));
+      const updatedTodos = [todo];
+      setTodos(updatedTodos);
+      localStorage.setItem('todos', JSON.stringify(updatedTodos));
     }
     setInputValue('');
+  };
+
+  const toggleComplete = (id: number) => {
+    const updatedTodos = todos.map((item: TodoType) => {
+      if (item.id === id) {
+        return { ...item, completed: !item.completed };
+      }
+      return item;
+    });
+
+    setTodos(updatedTodos);
+    localStorage.setItem('todos', JSON.stringify(updatedTodos));
+  };
+
+  const deleteTodo = (id: number) => {
+    const updatedTodos = todos.filter((item: TodoType) => id !== item.id);
+
+    setTodos(updatedTodos);
+    localStorage.setItem('todos', JSON.stringify(updatedTodos));
+  };
+
+  const updateTodo = (id: number, todoItem: TodoType) => {
+    console.log('id', id);
+    console.log('todoItem', todoItem);
+
+    const updatedTodos: TodoType[] = todos.map((item: TodoType) =>
+      item.id === id ? (item = todoItem) : item
+    );
+
+    localStorage.setItem('todos', JSON.stringify(updatedTodos));
+    console.log('updated todos', updatedTodos);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -37,8 +70,12 @@ function App() {
     addTodo(todoObj);
   };
 
+  console.log('todos', todos);
+
   return (
-    <TodoProvider value={{ todos, addTodo }}>
+    <TodoProvider
+      value={{ todos, addTodo, toggleComplete, deleteTodo, updateTodo }}
+    >
       <div className='flex flex-col gap-4 justify-center items-center h-screen'>
         <form
           onSubmit={handleSubmit}
