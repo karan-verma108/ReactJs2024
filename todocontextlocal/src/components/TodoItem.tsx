@@ -7,15 +7,16 @@ export default function TodoItem({
 }: {
   item: TodoType;
 }): React.JSX.Element {
-  const { todos, toggleComplete, deleteTodo, updateTodo } = useTodo();
   const [isEditing, setIsEditing]: BooleanState = useState<boolean>(false);
   const [editedTodo, setEditedTodo]: StringState = useState<string>('');
+
+  const { todos, toggleComplete, deleteTodo, updateTodo } = useTodo();
 
   const handleSave = (id: number) => {
     if (todos) {
       const todoBeingEdited: TodoType = todos.find(
         (item: TodoType) => id === item.id
-      );
+      ) ?? { id: Math.random(), title: '', completed: false };
 
       todoBeingEdited.title = editedTodo;
 

@@ -1,11 +1,13 @@
 import { useState } from 'react';
+
 import { TodoProvider } from './contexts/Todo';
 import TodoItem from './components/TodoItem';
 import { getTodosFromLocalStorage } from './utils/helper';
 
 function App() {
   const [inputValue, setInputValue]: StringState = useState<string>('');
-  const localTodos = getTodosFromLocalStorage();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const localTodos: any = getTodosFromLocalStorage();
 
   const [todos, setTodos]: [
     TodoType[],
@@ -48,15 +50,11 @@ function App() {
   };
 
   const updateTodo = (id: number, todoItem: TodoType) => {
-    console.log('id', id);
-    console.log('todoItem', todoItem);
-
     const updatedTodos: TodoType[] = todos.map((item: TodoType) =>
       item.id === id ? (item = todoItem) : item
     );
 
     localStorage.setItem('todos', JSON.stringify(updatedTodos));
-    console.log('updated todos', updatedTodos);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -69,8 +67,6 @@ function App() {
     };
     addTodo(todoObj);
   };
-
-  console.log('todos', todos);
 
   return (
     <TodoProvider
