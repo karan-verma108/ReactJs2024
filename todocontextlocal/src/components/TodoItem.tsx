@@ -18,10 +18,14 @@ export default function TodoItem({
         (item: TodoType) => id === item.id
       ) ?? { id: Math.random(), title: '', completed: false };
 
-      todoBeingEdited.title = editedTodo;
+      if (editedTodo.length > 0) {
+        todoBeingEdited.title = editedTodo;
 
-      updateTodo(id, todoBeingEdited);
-      setIsEditing(false);
+        updateTodo(id, todoBeingEdited);
+        setIsEditing(false);
+      } else {
+        alert('Please enter a todo...');
+      }
     }
   };
 
@@ -39,6 +43,7 @@ export default function TodoItem({
           value={editedTodo}
           autoFocus={isEditing}
           placeholder={item.title}
+          disabled={item.completed}
           className='col-span-8'
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setEditedTodo(e.target.value)
@@ -57,15 +62,20 @@ export default function TodoItem({
         />
       )}
       {!isEditing && (
-        <p className={`col-span-7 ${item.completed ? 'line-through' : ''}`}>
+        <p
+          className={`col-span-7 ${
+            item.completed ? 'line-through bg-slate-100 cursor-not-allowed' : ''
+          }`}
+        >
           {item.title}
         </p>
       )}
       <div className='flex gap-1 items-center col-span-4'>
         {!isEditing && (
           <button
-            className='cursor-pointer bg-orange-400 text-white'
+            className='cursor-pointer bg-orange-400 text-white disabled:cursor-not-allowed'
             onClick={() => setIsEditing(true)}
+            disabled={item.completed}
           >
             Edit
           </button>

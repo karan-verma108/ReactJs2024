@@ -51,21 +51,26 @@ function App() {
 
   const updateTodo = (id: number, todoItem: TodoType) => {
     const updatedTodos: TodoType[] = todos.map((item: TodoType) =>
-      item.id === id ? (item = todoItem) : item
+      item.id === id ? todoItem : item
     );
 
+    setTodos(updatedTodos);
     localStorage.setItem('todos', JSON.stringify(updatedTodos));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const todoObj: TodoType = {
-      id: Math.random() * 100,
-      title: inputValue,
-      completed: false,
-    };
-    addTodo(todoObj);
+    if (inputValue.length > 0) {
+      const todoObj: TodoType = {
+        id: Math.random() * 100,
+        title: inputValue,
+        completed: false,
+      };
+      addTodo(todoObj);
+    } else {
+      alert('Please enter a todo...!');
+    }
   };
 
   return (
