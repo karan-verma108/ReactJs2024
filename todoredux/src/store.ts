@@ -6,7 +6,7 @@ import {
   type ThunkDispatch,
   type UnknownAction,
 } from '@reduxjs/toolkit';
-import counterSlice from './features/counter/couterSlice';
+import counterSlice from './features/counter/counterSlice';
 
 export const store: EnhancedStore<
   unknown,
