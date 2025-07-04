@@ -7,6 +7,7 @@ import {
   type UnknownAction,
 } from '@reduxjs/toolkit';
 import counterSlice from './features/counter/counterSlice';
+import todoSlice from './features/todo/todoSlice';
 
 export const store: EnhancedStore<
   unknown,
@@ -22,5 +23,6 @@ export const store: EnhancedStore<
 > = configureStore({
   reducer: {
     counter: counterSlice,
+    todo: todoSlice,
   },
 });
